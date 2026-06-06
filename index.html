@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Climatización AASC S.A. — Servicio Termomecánico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:        #1a3a5c;
+      --azul-medio:  #2563a8;
+      --azul-claro:  #e8f0f9;
+      --gris-nav:    #f0f4f8;
+      --gris-claro:  #f4f6f8;
+      --gris-texto:  #4a5568;
+      --blanco:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--azul); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--gris-nav);
+      padding: 14px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    .logo img { height: 52px; display: block; }
+
+    .nav-links { list-style: none; display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--azul); text-decoration: none;
+      font-size: .9rem; font-weight: 600; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--azul-medio); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--azul); border-radius: 2px; transition: .3s;
+    }
+
+    /* menú mobile abierto */
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--gris-nav);
+      padding: 20px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+      gap: 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--azul) 0%, #0f2640 60%, #1e4080 100%);
+      color: white;
+      padding: 96px 48px;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      min-height: 520px;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(126,184,247,.18);
+      border: 1px solid rgba(126,184,247,.4);
+      color: #7eb8f7;
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 span { color: #7eb8f7; }
+    .hero-slogan { font-size: 1.05rem; color: #94b8d8; line-height: 1.7; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--azul-medio); color: white;
+      padding: 14px 32px; border-radius: 8px; font-weight: 700;
+      text-decoration: none; font-size: 1rem; transition: background .2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.4); color: white;
+      padding: 14px 32px; border-radius: 8px; font-weight: 700;
+      text-decoration: none; font-size: 1rem; transition: border-color .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: white; }
+    .hero-img { flex: 1; display: flex; justify-content: center; }
+    .hero-img img {
+      width: 100%; max-width: 480px; border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+      object-fit: cover; height: 320px;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--azul-medio);
+      display: flex; justify-content: center;
+    }
+    .stat {
+      flex: 1; max-width: 260px;
+      text-align: center; padding: 28px 20px;
+      border-right: 1px solid rgba(255,255,255,.2);
+      color: white;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 2rem; font-weight: 800; }
+    .stat-label { font-size: .82rem; opacity: .85; margin-top: 4px; }
+
+    /* ── SECCIONES ── */
+    section { padding: 80px 48px; }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--azul-medio); margin-bottom: 10px;
+    }
+    h2 { font-size: 2rem; font-weight: 800; color: var(--azul); margin-bottom: 14px; }
+    .subtitle { color: var(--gris-texto); font-size: 1rem; max-width: 560px; line-height: 1.7; }
+
+    /* ── SERVICIOS ── */
+    #servicios { background: var(--gris-claro); }
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .servicio-card {
+      background: white; border-radius: 12px;
+      padding: 28px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      border-top: 4px solid var(--azul-medio);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .servicio-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .servicio-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .servicio-card h3 { font-size: 1rem; font-weight: 700; color: var(--azul); margin-bottom: 8px; }
+    .servicio-card p { font-size: .87rem; color: var(--gris-texto); line-height: 1.6; }
+
+    /* ── POR QUÉ ELEGIRNOS ── */
+    #elegirnos { background: white; }
+    .elegirnos-wrap { display: flex; gap: 64px; align-items: center; margin-top: 48px; }
+    .elegirnos-img img {
+      width: 420px; border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.15);
+      object-fit: cover; height: 340px;
+    }
+    .razones { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+    .razon { display: flex; gap: 16px; align-items: flex-start; }
+    .razon-icon {
+      background: var(--azul-claro); color: var(--azul-medio);
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .razon h4 { font-size: 1rem; font-weight: 700; color: var(--azul); margin-bottom: 4px; }
+    .razon p { font-size: .87rem; color: var(--gris-texto); line-height: 1.6; }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--gris-claro); }
+    .contacto-wrap { display: flex; gap: 64px; margin-top: 48px; align-items: flex-start; }
+    .contacto-info { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+    .info-item { display: flex; gap: 16px; align-items: flex-start; }
+    .info-icon {
+      background: var(--azul); color: white;
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .info-item h4 {
+      font-size: .8rem; font-weight: 700; color: var(--gris-texto);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .info-item p { font-size: .98rem; font-weight: 600; color: var(--azul); }
+    form {
+      flex: 1.2; background: white; padding: 40px;
+      border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+    form h3 { font-size: 1.15rem; font-weight: 700; color: var(--azul); margin-bottom: 24px; }
+    .form-row { display: flex; gap: 16px; }
+    .form-group { flex: 1; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+    label { font-size: .8rem; font-weight: 600; color: var(--gris-texto); }
+    input, textarea {
+      border: 1.5px solid #d1d5db; border-radius: 8px;
+      padding: 12px 14px; font-size: .93rem; font-family: inherit;
+      transition: border-color .2s; width: 100%;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--azul-medio); }
+    textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%; background: var(--azul); color: white;
+      border: none; padding: 14px; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background .2s; margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--azul-medio); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--azul); color: #94b8d8;
+      text-align: center; padding: 36px 48px;
+      font-size: .88rem; line-height: 1.9;
+    }
+    footer strong { color: white; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; position: relative; flex-wrap: wrap; }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+
+      .hero {
+        flex-direction: column; padding: 48px 24px;
+        text-align: center; min-height: unset; gap: 32px;
+      }
+      .hero h1 { font-size: 2rem; }
+      .hero-btns { justify-content: center; flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; }
+      .hero-img img { max-width: 100%; height: 220px; }
+
+      .stats { display: grid; grid-template-columns: 1fr 1fr; }
+      .stat { max-width: unset; border-bottom: 1px solid rgba(255,255,255,.2); }
+
+      section { padding: 52px 20px; }
+      h2 { font-size: 1.6rem; }
+
+      .servicios-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
+      .servicio-card {
+        border-top: none; border-left: 4px solid var(--azul-medio);
+        display: flex; gap: 14px; align-items: flex-start; padding: 20px 16px;
+      }
+      .servicio-icon { font-size: 1.5rem; margin-bottom: 0; flex-shrink: 0; margin-top: 2px; }
+
+      .elegirnos-wrap { flex-direction: column; gap: 32px; margin-top: 32px; }
+      .elegirnos-img img { width: 100%; height: 220px; }
+
+      .contacto-wrap { flex-direction: column; gap: 36px; margin-top: 32px; }
+      form { padding: 28px 20px; }
+      .form-row { flex-direction: column; gap: 0; }
+
+      footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><img src="logo.png.png" alt="Climatización AASC S.A."/></div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+    <li><a href="#elegirnos" onclick="closeMenu()">Por qué elegirnos</a></li>
+    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Servicio Termomecánico · Refrigeración</div>
+    <h1>Soluciones en<br/><span>Climatización</span><br/>que perduran</h1>
+    <p class="hero-slogan">Más de 30 años garantizando el correcto<br/>funcionamiento de sus sistemas de refrigeración y calefacción.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Solicitar presupuesto</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="foto-equipos.jpg.jpeg" alt="Equipos de refrigeración industrial"/>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">+30</div><div class="stat-label">Años de trayectoria</div></div>
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes satisfechos</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Soporte técnico</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Compromiso garantizado</div></div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-label">Lo que hacemos</div>
+  <h2>Nuestros Servicios</h2>
+  <p class="subtitle">Brindamos soluciones integrales para empresas, industrias, oficinas, centros de cómputos, comercios y consorcios.</p>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">🔧</div>
+      <div><h3>Mantenimiento Preventivo y Correctivo</h3><p>Revisiones periódicas y reparaciones para mantener sus equipos en óptimas condiciones.</p></div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🛠️</div>
+      <div><h3>Reparaciones en General</h3><p>Diagnóstico y reparación de Chillers, Roof Top, VRV, sistemas separados e individuales.</p></div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">❄️</div>
+      <div><h3>Instalación de Nuevos Sistemas</h3><p>Instalamos equipos de refrigeración de alta gama adaptados a sus necesidades.</p></div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🔥</div>
+      <div><h3>Calefacción y Ventilación</h3><p>Servicio de calderas, calefactores y sistemas de ventilación para todo tipo de ambiente.</p></div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">📋</div>
+      <div><h3>Contratos de Abono Mensual</h3><p>Planes de mantenimiento continuo con prioridad de atención y descuentos exclusivos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section id="elegirnos">
+  <div class="section-label">Nuestros diferenciales</div>
+  <h2>¿Por qué elegirnos?</h2>
+  <div class="elegirnos-wrap">
+    <div class="elegirnos-img">
+      <img src="foto-tecnico.jpg.png" alt="Técnico realizando instalación"/>
+    </div>
+    <div class="razones">
+      <div class="razon">
+        <div class="razon-icon">🏢</div>
+        <div><h4>Experiencia en grandes superficies</h4><p>Trabajamos en ambientes críticos, industrias y edificios de alta demanda con probada eficiencia.</p></div>
+      </div>
+      <div class="razon">
+        <div class="razon-icon">⭐</div>
+        <div><h4>Materiales de primera calidad</h4><p>Solo utilizamos repuestos y materiales certificados, con mano de obra altamente calificada.</p></div>
+      </div>
+      <div class="razon">
+        <div class="razon-icon">🎁</div>
+        <div><h4>Visita técnica bonificada</h4><p>Al aprobar el presupuesto cotizado, la visita técnica inicial no tiene costo adicional.</p></div>
+      </div>
+      <div class="razon">
+        <div class="razon-icon">💰</div>
+        <div><h4>Descuentos por contratación anual</h4><p>Beneficios exclusivos para clientes con contratos anuales de mantenimiento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-label">Hablemos</div>
+  <h2>Solicite una visita técnica</h2>
+  <p class="subtitle">Sin compromiso. Evaluamos sus necesidades y le ofrecemos una propuesta a medida.</p>
+  <div class="contacto-wrap">
+    <div class="contacto-info">
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div><h4>Teléfonos</h4><p>(11) 2247-3177</p><p>(11) 4488-2580</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div><h4>Email</h4><p>info@climatizacionaasc.com.ar</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div><h4>Dirección</h4><p>Av. Gral. Paz 7955, Buenos Aires</p></div>
+      </div>
+    </div>
+    <form>
+      <h3>Dejenos su consulta</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Su nombre"/></div>
+        <div class="form-group"><label>Empresa</label><input type="text" placeholder="Nombre de la empresa"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="Su teléfono"/></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="Su email"/></div>
+      </div>
+      <div class="form-group"><label>¿Qué necesita?</label><textarea placeholder="Describa brevemente su necesidad o el equipo que requiere servicio..."></textarea></div>
+      <button type="submit" class="btn-submit">Enviar consulta →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>CLIMATIZACIÓN AASC S.A.</strong><br/>
+  Av. Gral. Paz 7955, Buenos Aires<br/>
+  (11) 2247-3177 · (11) 4488-2580 · info@climatizacionaasc.com.ar<br/><br/>
+  © 2025 AASC S.A. Todos los derechos reservados.
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+</script>
+
+</body>
+</html>
