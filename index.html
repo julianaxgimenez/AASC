@@ -142,6 +142,8 @@
       align-items: center;
       width: max-content;
       animation: scroll-logos 40s linear infinite;
+      will-change: transform;
+      transform: translateZ(0);
     }
     .carrusel-track:hover { animation-play-state: paused; }
     .carrusel-track img {
@@ -156,8 +158,8 @@
       filter: grayscale(0%) opacity(1);
     }
     @keyframes scroll-logos {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     /* ── SECCIONES ── */
@@ -277,8 +279,8 @@
 
       .clientes { padding: 40px 20px 36px; }
       .clientes h2 { margin-bottom: 28px; }
-      .carrusel-track { gap: 32px; }
-      .carrusel-track img { height: 45px; max-width: 110px; }
+      .carrusel-track { gap: 32px; animation-duration: 25s; }
+      .carrusel-track img { height: 45px; max-width: 110px; filter: none; }
 
       .servicios-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
       .servicio-card {
