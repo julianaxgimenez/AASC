@@ -120,6 +120,46 @@
     .stat-num { font-size: 2rem; font-weight: 800; }
     .stat-label { font-size: .82rem; opacity: .85; margin-top: 4px; }
 
+    /* ── CLIENTES (carrusel de logos) ── */
+    .clientes {
+      background: white;
+      padding: 60px 48px 50px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .clientes .section-label { margin-bottom: 10px; }
+    .clientes h2 { margin-bottom: 40px; }
+    .carrusel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .carrusel-track {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      width: max-content;
+      animation: scroll-logos 40s linear infinite;
+    }
+    .carrusel-track:hover { animation-play-state: paused; }
+    .carrusel-track img {
+      height: 60px;
+      max-width: 140px;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(.55);
+      transition: filter .3s;
+      flex-shrink: 0;
+    }
+    .carrusel-track img:hover {
+      filter: grayscale(0%) opacity(1);
+    }
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* ── SECCIONES ── */
     section { padding: 80px 48px; }
     .section-label {
@@ -235,6 +275,11 @@
       section { padding: 52px 20px; }
       h2 { font-size: 1.6rem; }
 
+      .clientes { padding: 40px 20px 36px; }
+      .clientes h2 { margin-bottom: 28px; }
+      .carrusel-track { gap: 32px; }
+      .carrusel-track img { height: 45px; max-width: 110px; }
+
       .servicios-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
       .servicio-card {
         border-top: none; border-left: 4px solid var(--azul-medio);
@@ -291,6 +336,75 @@
   <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes satisfechos</div></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Soporte técnico</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Compromiso garantizado</div></div>
+</div>
+
+<!-- CLIENTES -->
+<div class="clientes">
+  <div class="section-label">Confían en nosotros</div>
+  <h2>Empresas que nos eligen</h2>
+  <div class="carrusel">
+    <div class="carrusel-track">
+      <img src="logo-trilenium.png.jpg" alt="Trilenium Casino de Tigre"/>
+      <img src="logo-telered.png.png" alt="TeleRed"/>
+      <img src="logo-tecnópolis.png.jpg" alt="Tecnópolis"/>
+      <img src="logo-superintendencia.png.png" alt="Superintendencia de Seguros de la Nación"/>
+      <img src="logo-subte.png.png" alt="Subte Buenos Aires"/>
+      <img src="logo-ministerio-de-seguridad-nacional.png.png" alt="Ministerio de Seguridad Nacional"/>
+      <img src="logo-secretaría_Legal-Técnica.png.png" alt="Secretaría Legal y Técnica"/>
+      <img src="logo-pami.png.jpg" alt="PAMI"/>
+      <img src="logo-ospoce.png.jpg" alt="OSPOCE"/>
+      <img src="logo-mercedes-benz.png.jpg" alt="Mercedes-Benz"/>
+      <img src="logo-TSJ.png.png" alt="Tribunal Superior de Justicia"/>
+      <img src="logo-ministerio-economia_arg.png" alt="Ministerio de Economía"/>
+      <img src="logo-uba.jpg" alt="Universidad de Buenos Aires"/>
+      <img src="logo-anmat.png" alt="ANMAT"/>
+      <img src="logo-arca.png" alt="ARCA"/>
+      <img src="logo-inpi.png" alt="INPI"/>
+      <img src="logo-hotel-emperador.png" alt="Hotel Emperador"/>
+      <img src="logo-hospital-posadas.jpg" alt="Hospital Posadas"/>
+      <img src="logo-falabella.jpg" alt="Falabella"/>
+      <img src="logo-enre.png" alt="ENRE"/>
+      <img src="logo-energia-argentina.png" alt="Energía Argentina"/>
+      <img src="logo-min-publico-fiscal.jpg" alt="Ministerio Público Fiscal"/>
+      <img src="logo-educar.png" alt="Educ.ar"/>
+      <img src="logo-congreso.png" alt="Congreso de la Nación"/>
+      <img src="logo-diputados.jpg" alt="Cámara de Diputados"/>
+      <img src="logo-cya.jpg" alt="C&A"/>
+      <img src="logo-cablevision-fibertel.jpg" alt="Cablevisión Fibertel"/>
+      <img src="logo-buenos-aires-ciudad.png" alt="Buenos Aires Ciudad"/>
+      <img src="logo-anses.jpg" alt="ANSES"/>
+      <!-- Se repiten para que el carrusel sea continuo -->
+      <img src="logo-trilenium.png.jpg" alt="Trilenium Casino de Tigre"/>
+      <img src="logo-telered.png.png" alt="TeleRed"/>
+      <img src="logo-tecnópolis.png.jpg" alt="Tecnópolis"/>
+      <img src="logo-superintendencia.png.png" alt="Superintendencia de Seguros de la Nación"/>
+      <img src="logo-subte.png.png" alt="Subte Buenos Aires"/>
+      <img src="logo-ministerio-de-seguridad-nacional.png.png" alt="Ministerio de Seguridad Nacional"/>
+      <img src="logo-secretaría_Legal-Técnica.png.png" alt="Secretaría Legal y Técnica"/>
+      <img src="logo-pami.png.jpg" alt="PAMI"/>
+      <img src="logo-ospoce.png.jpg" alt="OSPOCE"/>
+      <img src="logo-mercedes-benz.png.jpg" alt="Mercedes-Benz"/>
+      <img src="logo-TSJ.png.png" alt="Tribunal Superior de Justicia"/>
+      <img src="logo-ministerio-economia_arg.png" alt="Ministerio de Economía"/>
+      <img src="logo-uba.jpg" alt="Universidad de Buenos Aires"/>
+      <img src="logo-anmat.png" alt="ANMAT"/>
+      <img src="logo-arca.png" alt="ARCA"/>
+      <img src="logo-inpi.png" alt="INPI"/>
+      <img src="logo-hotel-emperador.png" alt="Hotel Emperador"/>
+      <img src="logo-hospital-posadas.jpg" alt="Hospital Posadas"/>
+      <img src="logo-falabella.jpg" alt="Falabella"/>
+      <img src="logo-enre.png" alt="ENRE"/>
+      <img src="logo-energia-argentina.png" alt="Energía Argentina"/>
+      <img src="logo-min-publico-fiscal.jpg" alt="Ministerio Público Fiscal"/>
+      <img src="logo-educar.png" alt="Educ.ar"/>
+      <img src="logo-congreso.png" alt="Congreso de la Nación"/>
+      <img src="logo-diputados.jpg" alt="Cámara de Diputados"/>
+      <img src="logo-cya.jpg" alt="C&A"/>
+      <img src="logo-cablevision-fibertel.jpg" alt="Cablevisión Fibertel"/>
+      <img src="logo-buenos-aires-ciudad.png" alt="Buenos Aires Ciudad"/>
+      <img src="logo-anses.jpg" alt="ANSES"/>
+    </div>
+  </div>
 </div>
 
 <!-- SERVICIOS -->
