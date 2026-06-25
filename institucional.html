@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Institucional — Climatización AASC S.A.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:        #1a3a5c;
+      --azul-medio:  #2563a8;
+      --azul-claro:  #e8f0f9;
+      --gris-nav:    #f0f4f8;
+      --gris-claro:  #f4f6f8;
+      --gris-texto:  #4a5568;
+      --blanco:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--azul); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--gris-nav);
+      padding: 14px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    .logo img { height: 52px; display: block; }
+
+    .nav-links { list-style: none; display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--azul); text-decoration: none;
+      font-size: .9rem; font-weight: 600; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--azul-medio); }
+    .nav-links a.active { color: var(--azul-medio); border-bottom: 2px solid var(--azul-medio); padding-bottom: 2px; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--azul); border-radius: 2px; transition: .3s;
+    }
+
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--gris-nav);
+      padding: 20px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+      gap: 20px;
+    }
+
+    /* ── HERO INTERNO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--azul) 0%, #0f2640 60%, #1e4080 100%);
+      color: white;
+      padding: 72px 48px 56px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-size: 2.4rem; font-weight: 800; margin-bottom: 12px;
+    }
+    .page-hero p {
+      font-size: 1.05rem; color: #94b8d8; max-width: 600px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── CONTENIDO PRINCIPAL ── */
+    .contenido {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 48px;
+    }
+    .contenido h2 {
+      font-size: 1.8rem; font-weight: 800; color: var(--azul);
+      margin-bottom: 24px; position: relative; padding-bottom: 12px;
+    }
+    .contenido h2::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 60px; height: 4px; background: var(--azul-medio); border-radius: 2px;
+    }
+    .contenido p {
+      font-size: 1rem; color: var(--gris-texto); line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    /* ── MISIÓN / VISIÓN / VALORES ── */
+    .mvv {
+      background: var(--gris-claro);
+      padding: 72px 48px;
+    }
+    .mvv-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .mvv-card {
+      background: white; border-radius: 14px;
+      padding: 36px 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      border-top: 4px solid var(--azul-medio);
+    }
+    .mvv-card.valores {
+      grid-column: 1 / -1;
+    }
+    .mvv-card h3 {
+      font-size: 1.2rem; font-weight: 800; color: var(--azul);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .mvv-card h3 .icon {
+      background: var(--azul-claro); color: var(--azul-medio);
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .mvv-card p {
+      font-size: .95rem; color: var(--gris-texto); line-height: 1.75;
+    }
+    .valores-lista {
+      list-style: none; display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+    }
+    .valores-lista li {
+      font-size: .95rem; color: var(--gris-texto); line-height: 1.6;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .valores-lista li::before {
+      content: '✓';
+      background: var(--azul-medio); color: white;
+      width: 24px; height: 24px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--azul); color: #94b8d8;
+      text-align: center; padding: 36px 48px;
+      font-size: .88rem; line-height: 1.9;
+    }
+    footer strong { color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; position: relative; flex-wrap: wrap; }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+
+      .page-hero { padding: 48px 24px 40px; }
+      .page-hero h1 { font-size: 1.8rem; }
+
+      .contenido { padding: 44px 24px; }
+      .contenido h2 { font-size: 1.5rem; }
+
+      .mvv { padding: 48px 20px; }
+      .mvv-grid { grid-template-columns: 1fr; gap: 20px; }
+      .mvv-card { padding: 28px 22px; }
+      .mvv-card.valores { grid-column: auto; }
+      .valores-lista { grid-template-columns: 1fr; }
+
+      footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo"><img src="logo.png.png" alt="Climatización AASC S.A."/></a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="institucional.html" class="active" onclick="closeMenu()">Institucional</a></li>
+    <li><a href="index.html#servicios" onclick="closeMenu()">Servicios</a></li>
+    <li><a href="index.html#elegirnos" onclick="closeMenu()">Por qué elegirnos</a></li>
+    <li><a href="index.html#contacto" onclick="closeMenu()">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>Nuestra Empresa</h1>
+  <p>Más de 25 años brindando soluciones integrales en climatización y mantenimiento.</p>
+</div>
+
+<!-- CONTENIDO -->
+<div class="contenido">
+  <h2>Quiénes somos</h2>
+  <p>En CLIMATIZACIÓN® de AASC S.A. contamos con más de 25 años de experiencia brindando soluciones integrales en climatización y servicios de mantenimiento para empresas, organismos públicos, industrias, comercios y clientes particulares.</p>
+  <p>Nuestra actividad abarca la venta, instalación, puesta en marcha y mantenimiento preventivo y correctivo de equipos de aire acondicionado y sistemas de calefacción central. A lo largo de nuestra trayectoria, hemos ampliado nuestra capacidad operativa incorporando servicios electromecánicos y de mantenimiento integral de edificios, ofreciendo a nuestros clientes una respuesta eficiente y confiable.</p>
+  <p>Uno de los principales pilares de nuestra empresa es el área de mantenimiento, desde donde brindamos soporte permanente a las instalaciones que ejecutamos y desarrollamos programas de mantenimiento para terceros, con el objetivo de garantizar la continuidad operativa y el correcto funcionamiento de los sistemas.</p>
+  <p>Contamos con personal técnico propio altamente capacitado, una estructura operativa consolidada, taller, depósito y oficinas en Ciudadela, Provincia de Buenos Aires, y una flota de vehículos que nos permite brindar una rápida respuesta ante cada requerimiento.</p>
+  <p>La confianza depositada por nuestros clientes a lo largo de los años constituye nuestro principal respaldo y nos impulsa a continuar trabajando con los más altos estándares de calidad, profesionalismo y compromiso.</p>
+  <p>Creemos que cada proyecto representa una oportunidad para construir relaciones duraderas, ofreciendo soluciones eficientes y un servicio personalizado acorde a las necesidades de cada cliente.</p>
+</div>
+
+<!-- MISIÓN / VISIÓN / VALORES -->
+<div class="mvv">
+  <div class="mvv-grid">
+    <div class="mvv-card">
+      <h3><span class="icon">🎯</span> Misión</h3>
+      <p>Brindar soluciones integrales en climatización y mantenimiento, garantizando la calidad de nuestros servicios, la confiabilidad de las instalaciones y una atención personalizada que permita satisfacer las necesidades de cada cliente.</p>
+    </div>
+    <div class="mvv-card">
+      <h3><span class="icon">🔭</span> Visión</h3>
+      <p>Consolidarnos como una empresa referente en el sector de la climatización y el mantenimiento integral, distinguiéndonos por nuestra capacidad técnica, compromiso y vocación de servicio.</p>
+    </div>
+    <div class="mvv-card valores">
+      <h3><span class="icon">⭐</span> Valores</h3>
+      <ul class="valores-lista">
+        <li>Profesionalismo y responsabilidad</li>
+        <li>Calidad y mejora continua</li>
+        <li>Compromiso con nuestros clientes</li>
+        <li>Respuesta rápida y eficiente</li>
+        <li>Trabajo en equipo</li>
+        <li>Honestidad y transparencia</li>
+        <li>Seguridad y respeto por las normas técnicas</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>CLIMATIZACIÓN AASC S.A.</strong><br/>
+  Av. Gral. Paz 7955, Buenos Aires<br/>
+  (11) 2247-3177 · (11) 4488-2580 · info@climatizacionaasc.com.ar<br/><br/>
+  © 2025 AASC S.A. Todos los derechos reservados.
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+</script>
+
+</body>
+</html>
